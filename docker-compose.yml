@@ -1,0 +1,50 @@
+version: '3.9'
+services:
+  db:
+    image: 'couchbase:7.6.0'
+    restart: always
+    container_name: db
+    deploy:
+      replicas: 1
+    ports:
+      - 8091:8091
+      - 8092:8092
+      - 8093:8093
+      - 8094:8094
+      - 11210:11210
+    networks:
+      - my-network
+    volumes:
+      - couchbasedata:/opt/couchbase/var
+      #- ./script/configure-cluster.sh:/opt/couchbase/configure-cluster.sh
+    environment:
+      - COUCHBASE_ADMINISTRATOR_USERNAME=Administrator
+      - COUCHBASE_ADMINISTRATOR_PASSWORD=123456
+      - CLUSTER_NAME=LocalCouchbaseCluster
+      - SERVICES=data,index,query,fts
+      - CLUSTER_RAMSIZE=1024
+      - BUCKET=testbucket
+      - BUCKET_RAMSIZE=256
+      - NODE_INIT_INDEX_PATH=/opt/couchbase/var/lib/couchbase/indexes
+
+    # stdin_open: true
+   # entrypoint: sh -c "sh opt/couchbase/configure-cluster.sh"
+
+  app:
+    build: .
+    ports:
+      - "9090:8080"
+    container_name: todolist-app
+    depends_on:
+      - db
+    links:
+      - db
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  couchbasedata:
