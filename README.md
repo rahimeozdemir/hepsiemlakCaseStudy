@@ -7,7 +7,7 @@
 ### build:
 #### couchbase:
 * download couchbase server to local machine https://www.couchbase.com/downloads/
-* create a new cluster http://127.0.0.1:8091/ui/index.html
+* create a new cluster http://localhost:8091/ui/index.html
 * register by giving username Administrator and password 123456 (see CouchbaseConfig.java file)
 * when application started, a new bucked called todo_list and scopes(user, task) and collections(user,task) will be created automatically
 #### todolist application:
