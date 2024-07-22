@@ -20,7 +20,7 @@ import org.springframework.data.couchbase.repository.config.EnableCouchbaseRepos
 @EnableCouchbaseAuditing
 @EnableCouchbaseRepositories(basePackages = {"com.hepsiemlak.todo.repository"})
 public class CouchbaseConfig extends AbstractCouchbaseConfiguration {
-    private static final String CONNECTION_STRING = "host.docker.internal"; // for connect to database from docker container
+    private static final String CONNECTION_STRING = "host.docker.internal"; // for connect to local database from docker container
     private static final String USERNAME = "Administrator";
     private static final String PASSWORD = "123456";
     private static final String BUCKET_NAME = "todo_list";

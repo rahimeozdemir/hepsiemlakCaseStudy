@@ -1,17 +1,12 @@
 package com.hepsiemlak.todo.controller;
 
-import com.hepsiemlak.todo.exception.UserNotLoginException;
 import com.hepsiemlak.todo.mapper.UserMapper;
 import com.hepsiemlak.todo.model.dto.BaseResponseDto;
 import com.hepsiemlak.todo.model.dto.UserDto;
-import com.hepsiemlak.todo.security.JwtService;
 import com.hepsiemlak.todo.service.LoginService;
 import com.hepsiemlak.todo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
